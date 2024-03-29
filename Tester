@@ -1,0 +1,21 @@
+local Player = game.Players.LocalPlayer
+local Experience = 0
+local Level = 1
+
+local function GainExperience(amount)
+    Experience = Experience + amount
+    if Experience >= Level * 100 then
+        LevelUp()
+    end
+end
+
+local function LevelUp()
+    Level = Level + 1
+    -- Add code here to grant rewards or unlock new features for the player
+    Experience = 0 -- Reset experience for next level
+end
+
+-- Example: When an enemy is defeated, call GainExperience with the appropriate amount
+enemy.OnDefeated:Connect(function()
+    GainExperience(50) -- Adjust the amount as needed
+end)
